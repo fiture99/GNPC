@@ -1,5 +1,10 @@
+"use client";
+
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { X } from "lucide-react";
 import {
   Target,
   Users,
@@ -17,6 +22,7 @@ import teamMember4 from "@assets/generated_images/executive_manager_portrait_4.p
 import teamMember5 from "@assets/generated_images/executive_manager_portrait_5.png";
 
 export default function About() {
+  const [selectedMember, setSelectedMember] = useState(null);
   const values = [
     {
       icon: Target,
@@ -68,30 +74,40 @@ export default function About() {
       name: "Momodou J. Darboe",
       title: "Chief Executive Officer",
       bio: "Visionary leader with 20+ years in petroleum operations and strategic management. Drives GNPC's growth agenda.",
+      fullBio: "With over two decades of experience in the oil and gas industry, Momodou has successfully led GNPC through strategic expansion and operational excellence. He spearheads initiatives in exploration, downstream operations, and stakeholder engagement, positioning The Gambia as a competitive player in West African energy markets.",
+      expertise: ["Strategic Planning", "Petroleum Operations", "Business Development", "Stakeholder Relations"],
       image: teamMember1,
     },
     {
       name: "Fatou Sarr",
       title: "Director of Operations",
       bio: "Experienced operations executive overseeing all retail and distribution activities across 7 service stations.",
+      fullBio: "Fatou brings a wealth of operational expertise with proven track record in managing large-scale petroleum retail networks. Under her stewardship, GNPC's service stations have achieved record efficiency improvements and customer satisfaction ratings. She oversees daily operations, staff management, and service quality assurance.",
+      expertise: ["Retail Operations", "Logistics Management", "Staff Development", "Quality Control"],
       image: teamMember2,
     },
     {
       name: "Lamin Jagne",
       title: "Exploration & Development Manager",
       bio: "Expert in hydrocarbon exploration with expertise in seismic surveys and resource assessment.",
+      fullBio: "Lamin is a geoscience specialist with extensive experience in petroleum exploration and resource evaluation. He leads GNPC's exploration initiatives, coordinating seismic surveys, geological assessments, and partnership negotiations with international operators to unlock The Gambia's hydrocarbon potential.",
+      expertise: ["Seismic Interpretation", "Reservoir Geology", "Resource Assessment", "Partnership Negotiation"],
       image: teamMember3,
     },
     {
       name: "Aisatou Bah",
       title: "Finance Director",
       bio: "Financial strategist ensuring fiscal responsibility and sustainable economic growth for GNPC.",
+      fullBio: "Aisatou manages GNPC's financial operations with strategic oversight of budgeting, cash flow management, and investment decisions. Her expertise in petroleum economics and financial planning ensures sustainable growth while maintaining stringent accountability and regulatory compliance standards.",
+      expertise: ["Financial Planning", "Petroleum Economics", "Audit & Compliance", "Investment Strategy"],
       image: teamMember4,
     },
     {
       name: "Omar Touray",
       title: "Corporate Affairs Manager",
       bio: "Communications specialist focused on stakeholder relations and public engagement initiatives.",
+      fullBio: "Omar directs GNPC's external communications, corporate governance, and stakeholder engagement strategies. He manages media relations, government liaison, community outreach programs, and corporate social responsibility initiatives that strengthen GNPC's reputation and public trust.",
+      expertise: ["Corporate Communications", "Stakeholder Engagement", "Media Relations", "CSR Programs"],
       image: teamMember5,
     },
   ];
@@ -240,12 +256,17 @@ export default function About() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
             {management.map((member, index) => (
-              <Card key={index} className="hover-elevate overflow-hidden shadow-lg" data-testid={`card-team-member-${index}`}>
+              <Card 
+                key={index} 
+                className="hover-elevate overflow-hidden shadow-lg cursor-pointer transition-all" 
+                data-testid={`card-team-member-${index}`}
+                onClick={() => setSelectedMember(member)}
+              >
                 <div className="aspect-square overflow-hidden bg-primary/5">
                   <img 
                     src={member.image} 
                     alt={member.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                   />
                 </div>
                 <CardContent className="p-6 space-y-3">
@@ -260,6 +281,7 @@ export default function About() {
                   <p className="text-sm text-muted-foreground leading-relaxed" data-testid={`text-member-bio-${index}`}>
                     {member.bio}
                   </p>
+                  <p className="text-xs text-primary font-semibold pt-2">Click to view details</p>
                 </CardContent>
               </Card>
             ))}
@@ -293,6 +315,57 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      <Dialog open={!!selectedMember} onOpenChange={() => setSelectedMember(null)}>
+        <DialogContent className="max-w-2xl max-h-96 overflow-y-auto" data-testid="dialog-member-profile">
+          {selectedMember && (
+            <div className="space-y-6">
+              <DialogHeader>
+                <DialogTitle className="text-2xl" data-testid="dialog-title">
+                  {selectedMember.name}
+                </DialogTitle>
+              </DialogHeader>
+              
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="md:col-span-1">
+                  <img 
+                    src={selectedMember.image} 
+                    alt={selectedMember.name}
+                    className="w-full rounded-lg shadow-lg"
+                  />
+                </div>
+                
+                <div className="md:col-span-2 space-y-4">
+                  <div>
+                    <h3 className="text-lg font-semibold text-primary mb-2">Position</h3>
+                    <p className="text-foreground font-medium">{selectedMember.title}</p>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-lg font-semibold text-primary mb-2">Biography</h3>
+                    <p className="text-muted-foreground leading-relaxed">{selectedMember.fullBio}</p>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-lg font-semibold text-primary mb-2">Areas of Expertise</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedMember.expertise.map((skill, idx) => (
+                        <span 
+                          key={idx} 
+                          className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium"
+                          data-testid={`skill-${idx}`}
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
