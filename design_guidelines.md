@@ -1,180 +1,166 @@
 # GNPC Multi-Page Website Design Guidelines
 
 ## Design Approach
-**Corporate Professional with Environmental Focus** - Drawing inspiration from energy sector leaders like Shell, BP, and Aramco, combined with modern government portal aesthetics. The design emphasizes trust, authority, and sustainability through rich green gradients and structured layouts.
+**Modern Energy Sector Authority** - Drawing inspiration from Shell, BP, and Equinor's sophisticated digital presence. Rich photography with dark overlays establishes credibility and scale. Professional corporate aesthetic balanced with environmental consciousness through strategic green/yellow branding.
 
-## Color Palette (User-Specified)
-- **Primary Dark Green**: #166534 (headings, primary buttons, key elements)
+## Color Palette
+- **Primary Dark Green**: #166534 (headings, primary elements, footer)
 - **Primary Medium Green**: #15803d (cards, accents, active states)
-- **Primary Light Green**: #22c55e (highlights, success states, subtle backgrounds)
-- **Accent Yellow**: #eab308 (CTAs, highlights, important information badges)
-- **Neutrals**: White (#ffffff), off-white (#f9fafb), gray scale for text hierarchy
-
-**Gradient Applications**: Use green-to-green gradients (dark to medium) for hero sections, section backgrounds, and card overlays. Yellow accents sparingly for urgent CTAs and badges.
+- **Primary Light Green**: #22c55e (highlights, success indicators)
+- **Accent Yellow**: #eab308 (CTAs, badges, important highlights)
+- **Neutrals**: White (#ffffff), off-white (#f9fafb), gray scale (#1f2937 to #f3f4f6)
+- **Overlay**: rgba(22, 101, 52, 0.75) - dark green tint for hero images
 
 ## Typography Hierarchy
-**Font Stack**: Inter, -apple-system, Segoe UI, Roboto, sans-serif
+**Font Stack**: Inter via Google Fonts CDN
 
-- **H1 (Hero Headlines)**: 48-64px, font-weight 700, dark green, tight letter-spacing
-- **H2 (Section Headers)**: 36-42px, font-weight 600, dark green
-- **H3 (Card Titles)**: 24-28px, font-weight 600
-- **Body Large**: 18-20px, font-weight 400, line-height 1.7
-- **Body Standard**: 16px, font-weight 400, line-height 1.6
-- **Small/Meta**: 14px, font-weight 400-500, reduced opacity
+- **H1 (Hero)**: 56-72px, font-weight 700, white on images, tight tracking
+- **H2 (Sections)**: 36-48px, font-weight 600, dark green
+- **H3 (Cards)**: 24-28px, font-weight 600
+- **Body Large**: 18-20px, line-height 1.7
+- **Body Standard**: 16px, line-height 1.6, #374151
+- **Small/Meta**: 14px, font-weight 500, reduced opacity
 
 ## Spacing System
-**Tailwind Units**: Primarily use 4, 6, 8, 12, 16, 20, 24 for consistent rhythm
-- Section padding: py-16 to py-24 (desktop), py-12 (mobile)
-- Card padding: p-6 to p-8
-- Component gaps: gap-6 to gap-8
-- Container max-width: max-w-7xl with px-6
+**Tailwind Units**: 4, 6, 8, 12, 16, 20, 24, 32
 
-## Layout Structure - Multi-Page Architecture
+- Section padding: py-20 to py-32 (desktop), py-12 to py-16 (mobile)
+- Card padding: p-8
+- Grid gaps: gap-8
+- Container: max-w-7xl with px-6
 
-### Global Header (All Pages)
-- Sticky navigation with subtle shadow on scroll
-- Logo left (GNPC emblem + text lockup), navigation center/right
-- Desktop: horizontal menu, Mobile: hamburger with slide-in overlay
-- Navigation items: Home, About, Services, Products, Stations, Exploration, News, Contact
-- Background: white with subtle green accent border-bottom on scroll
+## Layout Structure
 
-### Page-Specific Layouts
+### Global Header
+Sticky white background with shadow on scroll. Logo left, horizontal navigation right (desktop). Green underline on active page. Hamburger menu (mobile) slides from right with green overlay background.
+
+**Navigation**: Home | About | Services | Products | Stations | Exploration | News | Contact
+
+### Page Layouts
 
 **Home Page**:
-- **Hero Section**: Full-width gradient background (dark to medium green), centered content
-  - Badge: "The Gambia's National Oil Company" (yellow background)
-  - Headline + Subtext + 2 CTAs (primary yellow, secondary outlined)
-  - Height: 85vh, no background image - pure gradient
-- **Statistics Banner**: 4-column grid (mobile: 2x2), cards with icons, numbers, and labels
-- **About Preview**: 2-column (60/40) - text left, Vision/Mission card right with green accent border
-- **Services Preview**: 3-column grid, icon-title-description cards with hover lift effect
-- **CTA Section**: Centered with gradient background, large button
+- **Hero**: Full-width image (oil refinery/offshore platform) with dark green overlay (85vh), centered white text with yellow badge, 2 CTAs with backdrop-blur
+- **Stats Banner**: 4-column grid, white cards with green accent borders, large numbers in green
+- **About Preview**: Image-text split (50/50), facility photo left, mission/vision right with green border-left accent
+- **Services Grid**: 3 cards with service imagery backgrounds, dark overlays, white text
+- **Products Showcase**: 3-column grid, product photography cards
+- **Stations Map**: Interactive section with embedded map + 3 featured station cards
+- **News Section**: 3 latest articles, image thumbnails, yellow date badges
+- **CTA Banner**: Exploration opportunity image background with overlay, centered content
 
 **About Page**:
-- **Hero**: Medium height (50vh) with gradient, breadcrumb navigation
-- **History Timeline**: Vertical timeline with alternating content blocks
-- **Vision/Mission**: Large feature cards, side-by-side on desktop
-- **Values Grid**: 4-column icon cards (Strategic Exploration, Capacity Building, Good Governance, Excellence)
+- **Hero**: Team/facility image, dark overlay, 60vh
+- **History Timeline**: Vertical with alternating image blocks
+- **Leadership Grid**: 4-column cards with professional headshots
+- **Values**: 2x2 grid, icon-driven cards with light green backgrounds
 
 **Services Page**:
-- **Hero**: Gradient with service overview text
-- **Services Grid**: 2-column layout, each service gets substantial space with icon, title, detailed description, and "Learn More" link
-- Alternating card backgrounds (white, light green tint)
+- **Hero**: Industrial operations image, 50vh
+- **Services**: 2-column alternating layout, each service features relevant photo (exploration, refining, distribution, retail)
 
 **Products Page**:
-- **Hero**: Product category overview
-- **Product Categories**: Card-based grid
-  - Fuel products (petrol, diesel, kerosene)
-  - Lubricants (car oil, related products)
-  - Additional services (car wash, spare parts, tire inflation)
-- Each card: product image placeholder, title, description, specifications list
+- **Hero**: Fuel station/products image
+- **Categories Grid**: 3-column, product photography (fuel pumps, lubricants, convenience items)
+- Each card: image, title, specs list, learn more link
 
 **Stations Page**:
-- **Interactive Map Section**: Embedded map showing 7 locations with custom green markers
-- **Station Cards Grid**: 3-column, each card contains:
-  - Location name, address, operating hours
-  - Services available icons
-  - Directions link
-- Locations: Banjul, Brikama Town, Bijilo, Farafenni, Basse Santa Su, Soma, and 7th station
+- **Hero**: Modern GNPC station exterior
+- **Map Section**: Full-width interactive map with 7 green markers
+- **Station Grid**: 3-column cards with station photos, details, hours, amenities icons
 
-**Exploration/Investment Page**:
-- **Hero**: Compelling gradient background with opportunity headline
-- **Opportunity Overview**: 2-column text + statistics
-- **Partner Benefits**: Icon grid highlighting advantages
-- **Inquiry Form Section**: Prominent card-based form
-  - Fields: Company Name, Email, Area of Interest (dropdown), Message (textarea)
-  - Green primary button
-  - Side panel: Why Partner with GNPC points
+**Exploration Page**:
+- **Hero**: Offshore platform/seismic survey imagery, 70vh
+- **Opportunity Overview**: Large stats with oil/gas field imagery backgrounds
+- **Benefits Grid**: 3-column, icon-driven
+- **Contact Form**: Side-by-side form + info panel, white card on light green background
 
 **News Page**:
-- **Hero**: Latest news headline feature
-- **News Grid**: 3-column cards (mobile: 1-column)
-  - Featured image placeholder
-  - Date badge (yellow)
-  - Title, excerpt
-  - "Read More" link
-- **Pagination**: Simple numbered navigation
+- **Featured Article**: Large image card spanning 2 columns
+- **News Grid**: 3-column with article thumbnails (press conferences, operations, community events)
+- Pagination at bottom
 
 **Contact Page**:
-- **Hero**: Contact us message
-- **3-Column Cards**: Address, Phone, Email with icons
-- **Contact Form**: Full-width below cards
-- **Map Embed**: GNPC headquarters location
+- **Hero**: GNPC headquarters building
+- **Info Cards**: 3-column (address, phone, email) with icons
+- **Form + Map**: 60/40 split layout
+- Embedded Google Maps for headquarters
 
-### Global Footer (All Pages)
-- Dark green background (#166534), light text
-- 4-column layout: 
-  - Column 1: GNPC logo + description
-  - Column 2: Quick Links (All pages)
-  - Column 3: Resources (Reports, Publications)
-  - Column 4: Legal (Privacy, Terms)
-- Bottom bar: Copyright, social links (if applicable)
+### Global Footer
+Dark green (#166534) background, 4-column layout:
+- Logo + tagline (white text)
+- Quick Links
+- Resources (Annual Reports, Safety Guidelines)
+- Contact info
+
+Bottom bar: Copyright, social icons (LinkedIn, Twitter)
 
 ## Component Library
 
 **Buttons**:
-- Primary: Yellow background (#eab308), dark text, rounded, px-8 py-3
-- Secondary: Outlined green border, green text, same padding
-- Hover: Slight lift (translateY), subtle shadow increase
+- Primary: Yellow (#eab308), dark text, rounded-lg, px-8 py-4, shadow-lg
+- On Images: backdrop-blur-md, semi-transparent white background, no special hover states
+- Secondary: Outlined green, transparent background
+- All: hover shadow-xl, no transform
 
 **Cards**:
-- White background, rounded corners (rounded-lg)
-- Subtle shadow (shadow-md), hover: shadow-lg with slight lift
-- Padding: p-6 to p-8
-- Border option: 2px accent green or yellow for featured cards
+- White background, rounded-lg, shadow-md
+- Image cards: overflow-hidden, hover shadow-xl
+- Featured: 3px yellow border-top
+- Padding: p-8
 
-**Icons**:
-- Use Font Awesome or Heroicons via CDN
-- Size: 24-32px for feature icons, 16-20px for inline icons
-- Color: Inherit from parent or green accent
+**Image Overlays**:
+- Standard: linear-gradient(to bottom, rgba(22, 101, 52, 0.7), rgba(22, 101, 52, 0.85))
+- Light: rgba(0, 0, 0, 0.4) for product/station cards
 
 **Forms**:
-- Input fields: Border gray, focus: green border, rounded
-- Labels: Above inputs, medium font-weight
-- Validation: Green success, red error states
-- Submit buttons: Primary yellow style
+- Inputs: border-gray-300, focus:border-green-600, rounded, px-4 py-3
+- Labels: font-medium, mb-2
+- Submit: Primary yellow button style
 
-**Badges/Tags**:
-- Small rounded rectangles, yellow background for highlights
-- px-3 py-1, uppercase text, 12-14px
+**Icons**: Heroicons CDN, 24-32px, green or inherit color
+
+**Badges**: Yellow background, dark text, rounded-full, px-3 py-1, uppercase, 12px
 
 ## Images
 
-**Hero Sections**: NO background images - use green gradients exclusively for corporate professionalism and brand consistency
+**Hero Images** (16:9 ratio, high resolution):
+- Home: Offshore oil platform or refinery at golden hour (1920x1080)
+- About: Modern office building or team collaboration (1920x1080)
+- Services: Industrial operations, pipelines, distribution (1920x1080)
+- Products: GNPC fuel station with customers (1920x1080)
+- Stations: Exterior of flagship station (1920x1080)
+- Exploration: Seismic survey ship or geological mapping (1920x1080)
+- News: Press conference or ribbon cutting (1920x1080)
+- Contact: GNPC headquarters building (1920x1080)
 
-**Content Images** (use placeholders):
-- Service icons: 64x64px, simple line icons in green
-- Product images: 400x300px rectangles for product cards
-- News thumbnails: 16:9 ratio, 600x338px
-- Station photos: 400x300px for location cards
-- Team/facilities: 800x600px for about page
+**Content Images**:
+- Service cards: 800x600 (refining equipment, tanker trucks, retail operations, quality testing)
+- Product cards: 400x300 (fuel pumps, lubricant bottles, convenience store)
+- Station cards: 600x400 (various GNPC locations)
+- News thumbnails: 600x400 (events, announcements)
+- Team photos: 400x400 (leadership headshots)
+- Timeline: 500x350 (historical milestones)
 
-**Image Treatment**: Subtle rounded corners (rounded-lg), optional green tint overlay for brand consistency
+**Image Treatment**: Dark overlays for text legibility, rounded-lg corners, subtle zoom on hover for cards
 
 ## Responsive Breakpoints
-- Mobile: < 768px (single column, stacked)
-- Tablet: 768px - 1024px (2-column grids)
-- Desktop: > 1024px (full multi-column layouts)
+- Mobile (< 768px): Single column, stacked layouts, reduced hero heights (50vh)
+- Tablet (768-1024px): 2-column grids
+- Desktop (> 1024px): Full multi-column layouts
 
-## Interaction Patterns
-- Smooth scroll between sections (within page)
-- Page transitions: Instant load, fade-in content
-- Hover effects: Cards lift (translateY -2px), buttons darken/lighten
-- Navigation: Highlight active page with yellow underline
-- Forms: Real-time validation feedback
-- Mobile menu: Slide-in from right with overlay
+## Interactions
+- Smooth scroll within pages
+- Image cards: subtle scale (1.02) on hover
+- Navigation: underline slide-in animation on active page
+- Forms: inline validation with green/red indicators
+- Mobile menu: slide-in with fade overlay
+- Map: custom green markers with info popups
 
 ## Accessibility
-- Maintain WCAG AA contrast ratios (dark green on white passes)
-- Focus indicators: Yellow outline on interactive elements
-- Alt text for all images
-- Semantic HTML structure
-- Keyboard navigation support
+- WCAG AA contrast (white text on dark overlays, dark green on white)
+- Yellow focus outlines (2px)
+- Alt text for all imagery describing context
+- Keyboard navigation
+- Semantic HTML5 structure
 
-## Performance Priorities
-- Lazy load images below fold
-- Optimize gradient rendering
-- Minimize animation usage - only purposeful hover/scroll effects
-- Use system fonts (already specified) for instant loading
-
-This creates a cohesive, professional multi-page experience that positions GNPC as a modern, trustworthy national petroleum corporation while maintaining government-appropriate formality and accessibility.
+This creates a premium petroleum industry digital experience with sophisticated photography, professional layouts, and strategic use of GNPC's brand colors throughout the multi-page architecture.
