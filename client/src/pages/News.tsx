@@ -1,6 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, ArrowRight } from "lucide-react";
+import newsImage1 from "@assets/generated_images/press_conference_announcement.png";
+import newsImage2 from "@assets/generated_images/station_opening_ceremony.png";
+import newsImage3 from "@assets/generated_images/exploration_facility_news.png";
 
 export default function News() {
   const newsArticles = [
@@ -10,6 +13,7 @@ export default function News() {
       excerpt: "The Managing Director of GNPC will represent The Gambia at the upcoming MSGBC Oil, Gas & Power Conference, highlighting the country's petroleum sector opportunities and strategic partnerships.",
       date: "December 15, 2025",
       category: "Events",
+      image: newsImage1,
     },
     {
       id: 2,
@@ -17,6 +21,7 @@ export default function News() {
       excerpt: "GNPC and Ghana National Petroleum Corporation sign memorandum of understanding to enhance technical cooperation, knowledge sharing, and capacity building initiatives between the two national oil companies.",
       date: "November 22, 2025",
       category: "Partnership",
+      image: newsImage1,
     },
     {
       id: 3,
@@ -24,6 +29,7 @@ export default function News() {
       excerpt: "Regional collaboration advances as GNPC signs bilateral trade agreement with Guinea-Bissau's petroleum authority, paving the way for cross-border cooperation in the MSGBC basin.",
       date: "October 18, 2025",
       category: "Regional",
+      image: newsImage3,
     },
     {
       id: 4,
@@ -31,6 +37,7 @@ export default function News() {
       excerpt: "GNPC expands its retail network with the opening of a new modern service station in Kombo East, bringing quality petroleum products and services closer to local communities.",
       date: "September 30, 2025",
       category: "Expansion",
+      image: newsImage2,
     },
     {
       id: 5,
@@ -38,6 +45,7 @@ export default function News() {
       excerpt: "GNPC's capacity building initiative celebrates successful completion of intensive petroleum technology training program, equipping young Gambians with industry-relevant skills.",
       date: "August 12, 2025",
       category: "Training",
+      image: newsImage3,
     },
     {
       id: 6,
@@ -45,6 +53,7 @@ export default function News() {
       excerpt: "Executive team represents The Gambia at regional energy conference, showcasing investment opportunities and engaging with international petroleum companies and investors.",
       date: "July 5, 2025",
       category: "Events",
+      image: newsImage1,
     },
   ];
 
@@ -95,26 +104,34 @@ export default function News() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {newsArticles.map((article) => (
-              <Card key={article.id} className="hover-elevate group" data-testid={`card-news-${article.id}`}>
+              <Card key={article.id} className="hover-elevate group overflow-hidden shadow-lg" data-testid={`card-news-${article.id}`}>
+                <div className="aspect-video overflow-hidden bg-primary/5">
+                  <img 
+                    src={article.image} 
+                    alt={article.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-start justify-between gap-3">
                     <Badge
                       variant="secondary"
                       className={categoryColors[article.category] || "bg-muted text-muted-foreground"}
+                      data-testid={`badge-category-${article.id}`}
                     >
                       {article.category}
                     </Badge>
                     <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
                       <Calendar className="w-3.5 h-3.5" />
-                      <span>{article.date}</span>
+                      <span data-testid={`text-date-${article.id}`}>{article.date}</span>
                     </div>
                   </div>
 
                   <div className="space-y-3">
-                    <h3 className="text-xl font-semibold text-foreground leading-tight group-hover:text-primary transition-colors">
+                    <h3 className="text-lg font-semibold text-foreground leading-tight group-hover:text-primary transition-colors" data-testid={`text-title-${article.id}`}>
                       {article.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-sm text-muted-foreground leading-relaxed" data-testid={`text-excerpt-${article.id}`}>
                       {article.excerpt}
                     </p>
                   </div>
