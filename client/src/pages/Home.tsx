@@ -12,8 +12,8 @@ import {
   Shield,
   Star,
 } from "lucide-react";
-import heroImage from "@assets/generated_images/energy_infrastructure_at_sunset.png";
-import stationImage from "@assets/generated_images/modern_petroleum_fuel_station.png";
+import heroImage from "@assets/generated_images/gnpc-cover.jpg";
+import stationImage from "@assets/generated_images/gambian_station_opening.png";
 import teamImage from "@assets/generated_images/corporate_energy_team_meeting.png";
 
 export default function Home() {
@@ -57,7 +57,7 @@ export default function Home() {
           backgroundImage: `url(${heroImage})`,
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/75 to-primary/85" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-primary/45 to-primary/40" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <Badge

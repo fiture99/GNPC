@@ -26,8 +26,8 @@ export function Header() {
           <Link href="/" className="flex items-center gap-2 hover-elevate active-elevate-2 rounded-md px-2 py-2">
             <img src={logoImage} alt="GNPC Logo" className="h-14 w-auto" />
             <div className="flex flex-col hidden sm:block">
-              <span className="font-bold text-sm text-foreground leading-tight">GNPC</span>
-              <span className="text-xs text-muted-foreground leading-tight">The Gambia</span>
+              {/* <span className="font-bold text-sm text-foreground leading-tight">GNPC</span>
+              <span className="text-xs text-muted-foreground leading-tight">The Gambia</span> */}
             </div>
           </Link>
 

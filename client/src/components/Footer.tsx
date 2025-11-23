@@ -13,8 +13,8 @@ export function Footer() {
             <div className="flex items-center gap-3 mb-6">
               <img src={logoImage} alt="GNPC Logo" className="h-16 w-auto" />
               <div className="flex flex-col">
-                <span className="font-bold text-sm leading-tight">GNPC</span>
-                <span className="text-xs opacity-90 leading-tight">The Gambia</span>
+                {/* <span className="font-bold text-sm leading-tight">GNPC</span>
+                <span className="text-xs opacity-90 leading-tight">The Gambia</span> */}
               </div>
             </div>
             <p className="text-sm opacity-90 leading-relaxed">
@@ -105,6 +105,18 @@ export function Footer() {
             <p className="text-sm opacity-90">
               © {currentYear} Gambia National Petroleum Corporation. All rights reserved.
             </p>
+
+            <p className="text-xs sm:text-sm">
+            Website designed by{' '}
+            <a 
+              href="https://nyakoi-services.onrender.com/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white font-semibold hover:underline transition-colors duration-200"
+            >
+              Nyakoi Services
+            </a>
+          </p>
             <div className="flex gap-6">
               <a href="#" className="text-sm opacity-90 hover:opacity-100 hover:underline">
                 Privacy Policy
