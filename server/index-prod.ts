@@ -10,43 +10,50 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export async function serveStatic(app: Express, _server: Server) {
-  // Since your server is bundled to dist/index.js, we need to go up one level
-  const distPath = path.resolve(__dirname, "public");
+  console.log('🔍 Debug Information:');
+  console.log('  - Server file location:', __dirname);
+  console.log('  - Current working directory:', process.cwd());
   
-  console.log('🔍 Debug: Server file location:', __dirname);
-  console.log('🔍 Debug: Looking for static files in:', distPath);
-  console.log('🔍 Debug: Current working directory:', process.cwd());
+  // Try multiple possible locations for static files
+  const possiblePaths = [
+    path.join(__dirname, 'public'),                    // dist/public
+    path.join(process.cwd(), 'dist', 'public'),        // /opt/render/project/src/dist/public
+    path.join(process.cwd(), 'public'),                // /opt/render/project/src/public
+    __dirname,                                         // dist/ (if files are moved)
+  ];
 
-  // Check if the path exists
-  if (!fs.existsSync(distPath)) {
-    console.error('❌ Build directory not found at:', distPath);
-    
-    // List what's actually in the dist directory
-    const distDir = path.resolve(__dirname);
-    if (fs.existsSync(distDir)) {
-      console.log('📁 Files in dist directory:', fs.readdirSync(distDir));
-    } else {
-      console.log('❌ dist directory does not exist at:', distDir);
+  let staticPath = '';
+  
+  // Check which path exists
+  for (const testPath of possiblePaths) {
+    console.log(`  - Checking: ${testPath}`);
+    if (fs.existsSync(testPath)) {
+      staticPath = testPath;
+      console.log(`  ✅ Found static files at: ${staticPath}`);
+      console.log(`  📁 Contents:`, fs.readdirSync(staticPath));
+      break;
     }
-    
-    throw new Error(
-      `Could not find the build directory: ${distPath}`
-    );
   }
 
-  console.log('✅ Found build directory!');
-  console.log('📁 Files in public directory:', fs.readdirSync(distPath));
+  if (!staticPath) {
+    console.error('❌ Could not find static files in any location');
+    // List all files in current directory for debugging
+    console.log('📁 Files in server directory:', fs.readdirSync(__dirname));
+    console.log('📁 Files in process.cwd():', fs.readdirSync(process.cwd()));
+    throw new Error('Static files not found after build');
+  }
 
   // Serve static files
-  app.use(express.static(distPath));
+  app.use(express.static(staticPath));
 
-  // API routes should come before the catch-all
-  // Add your API routes here if you have any
-
-  // Fall through to index.html for SPA routing (must be last)
+  // SPA fallback - serve index.html for all routes
   app.get("*", (req, res) => {
-    console.log('📄 Serving index.html for route:', req.originalUrl);
-    res.sendFile(path.join(distPath, "index.html"));
+    const indexPath = path.join(staticPath, "index.html");
+    if (fs.existsSync(indexPath)) {
+      res.sendFile(indexPath);
+    } else {
+      res.status(404).send('Index.html not found');
+    }
   });
 }
 
