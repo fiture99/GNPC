@@ -3,109 +3,91 @@ import express from 'express';
 import path from 'path';
 import fs from 'fs';
 
-console.log('🔧 Starting server initialization...');
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-// Global error handler to catch crashes
-process.on('uncaughtException', (error) => {
-  console.error('💥 UNCAUGHT EXCEPTION:', error);
-  process.exit(1);
-});
+// Log startup information
+console.log('🚀 ===== SERVER STARTUP =====');
+console.log('📦 NODE_ENV:', process.env.NODE_ENV);
+console.log('🔧 PORT:', PORT);
+console.log('📁 Current directory:', process.cwd());
 
-process.on('unhandledRejection', (reason, promise) => {
-  console.error('💥 UNHANDLED REJECTION at:', promise, 'reason:', reason);
-  process.exit(1);
-});
-
+// List all files for debugging
 try {
-  const app = express();
-  const PORT = process.env.PORT || 3000;
-
-  console.log('📦 Environment:', process.env.NODE_ENV);
-  console.log('🔧 Port:', PORT);
-  console.log('📁 Current directory:', process.cwd());
-
-  // Check what exists in the current directory
-  try {
-    const files = fs.readdirSync(process.cwd());
-    console.log('📂 Files in root:', files);
-  } catch (error) {
-    console.log('❌ Cannot read root directory:', error);
-  }
-
-  // Check dist directory
-  const distPath = path.join(process.cwd(), 'dist');
-  let distExists = false;
-  try {
-    distExists = fs.existsSync(distPath);
-    console.log('📁 dist/ exists:', distExists);
-    if (distExists) {
-      const distFiles = fs.readdirSync(distPath);
-      console.log('📂 Files in dist/:', distFiles);
-    }
-  } catch (error) {
-    console.log('❌ Cannot read dist directory:', error);
-  }
-
-  // Check dist/public directory
-  const publicPath = path.join(distPath, 'public');
-  let publicExists = false;
-  try {
-    publicExists = fs.existsSync(publicPath);
-    console.log('📁 dist/public/ exists:', publicExists);
-    if (publicExists) {
-      const publicFiles = fs.readdirSync(publicPath);
-      console.log('📂 Files in dist/public/:', publicFiles);
-    }
-  } catch (error) {
-    console.log('❌ Cannot read public directory:', error);
-  }
-
-  // Set static path
-  let staticPath = publicPath;
-  if (!publicExists && distExists) {
-    // Fallback to dist/ if public/ doesn't exist
-    staticPath = distPath;
-    console.log('🔄 Falling back to dist/ as static path');
-  }
-
-  console.log('🎯 Final static path:', staticPath);
-
-  // Serve static files
-  app.use(express.static(staticPath));
-
-  // Health endpoint - always works
-  app.get('/api/health', (req, res) => {
-    res.json({
-      status: 'OK',
-      message: 'Server is running!',
-      staticPath: staticPath,
-      timestamp: new Date().toISOString()
-    });
-  });
-
-  // SPA fallback - only if index.html exists
-  app.get('*', (req, res) => {
-    const indexPath = path.join(staticPath, 'index.html');
-    if (fs.existsSync(indexPath)) {
-      res.sendFile(indexPath);
-    } else {
-      res.status(404).json({
-        error: 'Index file not found',
-        staticPath: staticPath,
-        files: fs.existsSync(staticPath) ? fs.readdirSync(staticPath) : 'Path not accessible'
-      });
-    }
-  });
-
-  // Start server
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log('\n🎉 SERVER STARTED SUCCESSFULLY!');
-    console.log(`📍 Port: ${PORT}`);
-    console.log(`📁 Serving from: ${staticPath}`);
-    console.log(`🌐 Health: https://gnpc.onrender.com/api/health`);
-  });
-
+  const rootFiles = fs.readdirSync(process.cwd());
+  console.log('📂 Root directory files:', rootFiles);
 } catch (error) {
-  console.error('💥 SERVER STARTUP FAILED:', error);
-  process.exit(1);
+  console.log('❌ Cannot read root directory');
 }
+
+// Define static path - Use absolute path from project root
+const staticPath = path.resolve(process.cwd(), 'dist', 'public');
+
+console.log('🎯 Static path:', staticPath);
+
+// Check if static path exists
+if (!fs.existsSync(staticPath)) {
+  console.error('💥 CRITICAL: Static path does not exist!');
+  console.log('📂 Available in dist/:', fs.existsSync(path.join(process.cwd(), 'dist')) 
+    ? fs.readdirSync(path.join(process.cwd(), 'dist'))
+    : 'dist/ does not exist'
+  );
+} else {
+  console.log('✅ Static path exists');
+  console.log('📂 Files in static path:', fs.readdirSync(staticPath));
+}
+
+// Serve static files with explicit configuration
+app.use('/assets', express.static(path.join(staticPath, 'assets')));
+app.use(express.static(staticPath));
+
+// Health endpoint - test if server is responding
+app.get('/api/health', (req, res) => {
+  console.log('❤️ Health check requested');
+  res.json({
+    status: 'OK',
+    server: 'Express on Render',
+    staticPath: staticPath,
+    files: fs.existsSync(staticPath) ? fs.readdirSync(staticPath) : [],
+    hasIndex: fs.existsSync(path.join(staticPath, 'index.html')),
+    timestamp: new Date().toISOString()
+  });
+});
+
+// Test route
+app.get('/api/test', (req, res) => {
+  res.json({ message: 'API is working!' });
+});
+
+// SPA fallback - serve index.html for all other routes
+app.get('*', (req, res) => {
+  console.log('📄 Request for:', req.originalUrl);
+  
+  const indexPath = path.join(staticPath, 'index.html');
+  
+  if (fs.existsSync(indexPath)) {
+    console.log('✅ Serving index.html');
+    res.sendFile(indexPath);
+  } else {
+    console.log('❌ index.html not found at:', indexPath);
+    res.status(404).json({
+      error: 'File not found',
+      requested: req.originalUrl,
+      staticPath: staticPath,
+      filesAvailable: fs.existsSync(staticPath) ? fs.readdirSync(staticPath) : 'none'
+    });
+  }
+});
+
+// Start server
+app.listen(PORT, '0.0.0.0', () => {
+  console.log('\n🎉 ===== SERVER STARTED SUCCESSFULLY =====');
+  console.log(`📍 Port: ${PORT}`);
+  console.log(`📁 Static path: ${staticPath}`);
+  console.log(`🌐 Your App: https://gnpc.onrender.com`);
+  console.log(`❤️  Health Check: https://gnpc.onrender.com/api/health`);
+  console.log(`🧪 Test API: https://gnpc.onrender.com/api/test`);
+  console.log(`📄 Main Page: https://gnpc.onrender.com/`);
+});
+
+console.log('🔧 Server configuration complete');
