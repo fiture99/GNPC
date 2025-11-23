@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logoImage from "@assets/gnpc_1763909036153.jpg";
 
 export function Header() {
   const [location] = useLocation();
@@ -22,12 +23,10 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-background border-b border-primary/20 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center gap-3 hover-elevate active-elevate-2 rounded-md px-3 py-2">
-            <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-lg">
-              GNPC
-            </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-lg text-foreground leading-tight">GNPC</span>
+          <Link href="/" className="flex items-center gap-2 hover-elevate active-elevate-2 rounded-md px-2 py-2">
+            <img src={logoImage} alt="GNPC Logo" className="h-14 w-auto" />
+            <div className="flex flex-col hidden sm:block">
+              <span className="font-bold text-sm text-foreground leading-tight">GNPC</span>
               <span className="text-xs text-muted-foreground leading-tight">The Gambia</span>
             </div>
           </Link>

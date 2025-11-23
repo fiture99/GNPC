@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Mail, Phone, MapPin } from "lucide-react";
+import logoImage from "@assets/gnpc_1763909036153.jpg";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -10,12 +11,10 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-full bg-primary-foreground/10 flex items-center justify-center text-primary-foreground font-bold text-lg">
-                GNPC
-              </div>
+              <img src={logoImage} alt="GNPC Logo" className="h-16 w-auto" />
               <div className="flex flex-col">
-                <span className="font-bold text-lg leading-tight">GNPC</span>
-                <span className="text-sm opacity-90 leading-tight">The Gambia</span>
+                <span className="font-bold text-sm leading-tight">GNPC</span>
+                <span className="text-xs opacity-90 leading-tight">The Gambia</span>
               </div>
             </div>
             <p className="text-sm opacity-90 leading-relaxed">
