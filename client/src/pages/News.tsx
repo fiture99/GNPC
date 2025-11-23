@@ -1,9 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, ArrowRight } from "lucide-react";
-import newsImage1 from "@assets/generated_images/press_conference_announcement.png";
-import newsImage2 from "@assets/generated_images/station_opening_ceremony.png";
-import newsImage3 from "@assets/generated_images/exploration_facility_news.png";
+import newsImage1 from "@assets/generated_images/gambian_press_conference.png";
+import newsImage2 from "@assets/generated_images/gambian_station_opening.png";
+import newsImage3 from "@assets/generated_images/gambian_exploration_operations.png";
 
 export default function News() {
   const newsArticles = [
