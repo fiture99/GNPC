@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import {
   Target,
   Users,
@@ -9,6 +10,11 @@ import {
   Handshake,
   Globe,
 } from "lucide-react";
+import teamMember1 from "@assets/generated_images/executive_manager_portrait_1.png";
+import teamMember2 from "@assets/generated_images/executive_manager_portrait_2.png";
+import teamMember3 from "@assets/generated_images/executive_manager_portrait_3.png";
+import teamMember4 from "@assets/generated_images/executive_manager_portrait_4.png";
+import teamMember5 from "@assets/generated_images/executive_manager_portrait_5.png";
 
 export default function About() {
   const values = [
@@ -54,6 +60,39 @@ export default function About() {
       year: "2025",
       title: "Continued Growth",
       description: "Operating 7 service stations with plans for expansion across The Gambia's regions.",
+    },
+  ];
+
+  const management = [
+    {
+      name: "Momodou J. Darboe",
+      title: "Chief Executive Officer",
+      bio: "Visionary leader with 20+ years in petroleum operations and strategic management. Drives GNPC's growth agenda.",
+      image: teamMember1,
+    },
+    {
+      name: "Fatou Sarr",
+      title: "Director of Operations",
+      bio: "Experienced operations executive overseeing all retail and distribution activities across 7 service stations.",
+      image: teamMember2,
+    },
+    {
+      name: "Lamin Jagne",
+      title: "Exploration & Development Manager",
+      bio: "Expert in hydrocarbon exploration with expertise in seismic surveys and resource assessment.",
+      image: teamMember3,
+    },
+    {
+      name: "Aisatou Bah",
+      title: "Finance Director",
+      bio: "Financial strategist ensuring fiscal responsibility and sustainable economic growth for GNPC.",
+      image: teamMember4,
+    },
+    {
+      name: "Omar Touray",
+      title: "Corporate Affairs Manager",
+      bio: "Communications specialist focused on stakeholder relations and public engagement initiatives.",
+      image: teamMember5,
     },
   ];
 
@@ -184,6 +223,46 @@ export default function About() {
                 </Card>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-28 bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground" data-testid="text-management-headline">
+              Our Management Team
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+              Dedicated professionals leading GNPC's mission to advance The Gambia's petroleum sector
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+            {management.map((member, index) => (
+              <Card key={index} className="hover-elevate overflow-hidden shadow-lg" data-testid={`card-team-member-${index}`}>
+                <div className="aspect-square overflow-hidden bg-primary/5">
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <CardContent className="p-6 space-y-3">
+                  <div>
+                    <h3 className="text-lg font-bold text-foreground" data-testid={`text-member-name-${index}`}>
+                      {member.name}
+                    </h3>
+                    <p className="text-sm text-primary font-semibold" data-testid={`text-member-title-${index}`}>
+                      {member.title}
+                    </p>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed" data-testid={`text-member-bio-${index}`}>
+                    {member.bio}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
