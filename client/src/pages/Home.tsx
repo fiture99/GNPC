@@ -130,7 +130,7 @@ export default function Home() {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed text-lg">
                 <p>
-                  The Gambia National Petroleum Corporation (GNPC) was established in 2003 as the national oil company of The Gambia. Following statutory enactment in 2014, GNPC began its retail and distribution activities in 2010, representing the business arm of the Gambia Government within the downstream petroleum sector.
+                  Gambia National Petroleum Corporation (GNPC) was established in 2003 as the national oil company of The Gambia. Following statutory enactment in 2014, GNPC began its retail and distribution activities in 2010, representing the business arm of the Gambia Government within the downstream petroleum sector.
                 </p>
                 <p>
                   We currently operate 7 petroleum stations strategically located in Banjul, Brikama Town, Bijilo, Farafenni in the North Bank, Basse Santa Su in the Upper River Region, and Soma. Our commitment extends beyond fuel distribution to comprehensive automotive services and products.

@@ -160,7 +160,7 @@ export default function About() {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  The Gambia National Petroleum Corporation (GNPC) was established in 2003 as the national oil company of The Gambia, mandated to manage and develop the country's petroleum resources on behalf of the government and people of The Gambia.
+                  Gambia National Petroleum Corporation (GNPC) was established in 2003 as the national oil company of The Gambia, mandated to manage and develop the country's petroleum resources on behalf of the government and people of The Gambia.
                 </p>
                 <p>
                   Following statutory enactment in 2014, GNPC solidified its position as the government's principal petroleum business arm. Beginning retail and distribution activities in 2010, we represent the downstream petroleum sector's cornerstone in The Gambia.

@@ -19,7 +19,7 @@ export function Footer() {
               </div>
             </div>
             <p className="text-sm opacity-90 leading-relaxed">
-              The Gambia's national petroleum corporation, driving economic growth through sustainable energy solutions and strategic petroleum development since 2003.
+              Gambia National Petroleum Corporation, driving economic growth through sustainable energy solutions and strategic petroleum development since 2003.
             </p>
           </div>
 
