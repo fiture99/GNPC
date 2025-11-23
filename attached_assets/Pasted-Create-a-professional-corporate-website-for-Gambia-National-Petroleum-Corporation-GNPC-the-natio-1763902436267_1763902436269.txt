@@ -1,0 +1,197 @@
+Create a professional corporate website for Gambia National Petroleum Corporation (GNPC) - the national oil company of The Gambia
+
+DESIGN REQUIREMENTS:
+
+Color Scheme: Dark green (#166534), medium green (#15803d), light green (#22c55e), accent yellow (#eab308)
+
+Typography: Clean, professional system fonts (Inter/Segoe UI/Roboto)
+
+Layout: Modern single-page application with smooth scrolling
+
+Style: Corporate, professional with gradient backgrounds and card-based design
+
+WEBSITE SECTIONS:
+
+1. HEADER & NAVIGATION
+
+GNPC logo + "Gambia National Petroleum Corporation"
+
+Sticky navigation: Home, About, Services, Exploration, News, Contact
+
+Mobile hamburger menu
+
+2. HERO SECTION
+
+Full-width gradient background (green tones)
+
+Badge: "The Gambia's National Oil Company"
+
+Headline: "Powering The Gambia's Energy Future"
+
+Subtext: "Driving economic growth through sustainable energy solutions and strategic petroleum development"
+
+CTA Buttons: "Explore Opportunities" (primary), "Learn More" (secondary)
+
+3. STATISTICS BANNER
+4 statistics in cards:
+
+Established: 2003
+
+Offshore Blocks: 5+
+
+Ownership: 100% State
+
+Experience: 20+ Years
+
+4. ABOUT GNPC
+Left Column:
+
+Headline: "Building The Gambia's Petroleum Industry"
+
+Text about establishment (2003) and statutory enactment (2014)
+
+Value icons: Strategic Exploration, Capacity Building, Good Governance, Excellence
+
+Right Column - Vision/Mission Card:
+Vision: "To be the leading petroleum company in The Gambia delivering quality services in an efficient, reliable and professional manner with a highly competent and dedicated team."
+Mission: "To accelerate exploration efforts with partners to achieve new oil and gas discoveries, supporting The Gambia's goal of greater energy self-sufficiency while developing local technical capabilities and human capital."
+
+5. CORE SERVICES (6 services grid)
+
+Exploration & Production - Conducting seismic surveys and exploring for hydrocarbon resources
+
+Partnership Management - Collaborating with international operators and investors
+
+Licensing & Regulation - Managing petroleum licenses and ensuring compliance
+
+Capacity Building - Developing Gambian expertise through training programs
+
+Research & Development - Engaging in R&D programs
+
+Regional Collaboration - Strengthening ties with regional counterparts
+
+6. INVESTMENT OPPORTUNITIES
+Left Column:
+
+Headline: "Investment Opportunities"
+
+Text about The Gambia as frontier market near Sangomar Basin discoveries
+
+"Partner With Us" button
+
+Right Column - Inquiry Form:
+
+Title: "Quick Inquiry"
+
+Fields: Company Name, Email, Area of Interest (dropdown), Message
+
+Submit button
+
+7. NEWS & EVENTS (3 article cards)
+
+"GNPC MD to Speak at MSGBC 2025" - Dec 2025
+
+"Ghana-Gambia Partnership Strengthened" - Nov 2025
+
+"Trade Agreement with Guinea-Bissau" - Oct 2025
+
+8. CONTACT INFORMATION
+3 contact cards:
+
+Address: Petroleum House, Bertil Harding Highway, Brusubi, The Gambia
+
+Phone: +220 XXX XXXX (primary), +220 XXX XXXX (secondary)
+
+Email: info@gnpc.gm, exploration@gnpc.gm, partnerships@gnpc.gm
+
+9. FOOTER
+
+GNPC logo and description
+
+Quick Links, Resources, Legal sections
+
+Copyright: "© 2025 Gambia National Petroleum Corporation. All rights reserved."
+
+TECHNICAL REQUIREMENTS:
+
+Fully responsive (mobile, tablet, desktop)
+
+Smooth scrolling between sections
+
+Hover effects on interactive elements
+
+Professional corporate aesthetic
+
+Fast loading performance
+
+SUPPLEMENTAL INSTRUCTIONS FOR BOLT.NEW:
+If the initial output needs refinement, use these follow-up commands:
+
+For design adjustments:
+
+"Make the green gradient more prominent in the hero section"
+
+"Increase spacing between sections for better readability"
+
+"Make the statistics cards more visually striking"
+
+"Improve mobile responsiveness for the services grid"
+
+For content adjustments:
+
+"Add more detailed descriptions for each service"
+
+"Make the inquiry form more prominent"
+
+"Enhance the news section with read more links"
+
+"Add hover effects to all interactive elements"
+
+For technical improvements:
+
+"Ensure all sections have proper padding and margins"
+
+"Make sure the sticky navigation works smoothly"
+
+"Optimize for fast loading speeds"
+
+"Test responsive design on all screen sizes"
+
+EXPECTED OUTPUT:
+Bolt.new should generate a complete, professional single-page website with:
+
+✅ Modern green and yellow color scheme
+
+✅ All 9 sections as specified
+
+✅ Fully responsive design
+
+✅ Interactive elements (hover states, smooth scrolling)
+
+✅ Professional corporate aesthetic
+
+✅ Mobile-friendly navigation
+
+✅ Clean, readable typography
+
+This prompt gives Bolt.new clear, structured instructions to create exactly what's described in your detailed project proposal. The website will serve as a perfect demo to present to GNPC leadership.
+
+i want seperate pages for each pages
+
+	 Information:
+The GNPC is a petroleum products distribution company selling petrol, gasoil, car oil and related products. It represents the business arm of the Gambia Government within the downstream petroleum sector.
+
+The firm began its retail and distribution activities in 2010 and they presently operate 7 petroleum stations in Banjul, Brikama Town, Bijilo, Farafenni in the North Bank, Basse Santa Su in the Upper River Region, and Soma.
+
+Over time the GNPC parastatal intends to expand its service stations into other geographic regions to be within reach of most rural and urban customers.
+
+ Products & Services:
+• Fuel Pump (kerosene, diesel, petrol)
+
+• Car washing & detailed cleaning service
+
+• Auto spare parts (tires, batteries, foot mats, windscreen wipers, lubricants etc.)
+ 
+• Lube draining bay
+
+• Tyre inflation (gratis)
